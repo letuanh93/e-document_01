@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+  class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   before_save :downcase_email
@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :passive_conversations, class_name: Chatroom.name,
     foreign_key: :guest_id, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :notifications, foreign_key: :recipient_id
 
   enum role: [:member, :admin]
 

@@ -1,6 +1,6 @@
 User.create(
   name: "letuananh",
-  email: "letuananh@gmail.com",
+  email: "letuanh821993@gmail.com",
   address: "ha noi",
   password: "123456",
   phone_number: "0987654321",

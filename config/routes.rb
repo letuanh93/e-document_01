@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
     resources :messages, only: [:index]
     resources :chatrooms
+    resources :notifications, only: [:index, :update]
     mount ActionCable.server => "/cable"
 
     namespace :api do
