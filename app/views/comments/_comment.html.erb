@@ -1,4 +1,4 @@
-<li class="item-comment">
+<li class="item-comment" id="<%= dom_id(comment) %>">
   <div class="row">
     <div class="avatar col-md-3">
       <%= image_tag Settings.image, class: "img-responsive" %>
@@ -15,6 +15,14 @@
           <%= t ".comment_at" %><%= time_ago_in_words(comment.created_at) %>
           <%= t ".ago" %>
         </span>
+        <% if current_user == comment.user %>
+          <span class="pull-right">
+            <%= link_to document_comment_path(@document, comment),
+              class: "btn-delete-comment", remote:true, method: :delete do %>
+              <i class="fa fa-times"></i>
+            <% end %>
+          </span>
+        <% end %>
       </div>
     </div>
   </div>

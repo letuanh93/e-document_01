@@ -1,15 +1,27 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
+  load_resource :document
 
   def create
-    @document = Document.find_by id: params[:document_id]
     @comment = @document.comments.new comment_params
     @comment.user = current_user
     if @comment.save!
       respond_to do |format|
         format.html{redirect_to @document}
         format.js
+      end
+    end
+  end
+
+  def destroy
+    @comment = Comment.find_by id: params[:id]
+    if @comment
+      if @comment.destroy
+        respond_to do |format|
+          format.js
+          format.html{redirect_to @document}
+        end
       end
     end
   end

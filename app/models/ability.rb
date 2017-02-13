@@ -9,7 +9,7 @@ class Ability
     when "member"
       can :read, :all
       can :create, [Favorite, Document, Comment, Download, Coin]
-      can :destroy, [Favorite, Document], user_id: user.id
+      can :destroy, [Favorite, Document, Comment], user_id: user.id
       can :manage, Relationship
     else
       can :read, :all
