@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119012726) do
+ActiveRecord::Schema.define(version: 20170214042644) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -119,6 +119,14 @@ ActiveRecord::Schema.define(version: 20170119012726) do
     t.datetime "updated_at",  null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "permits", force: :cascade do |t|
+    t.integer  "document_id"
+    t.integer  "host_id"
+    t.integer  "guest_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "reads", force: :cascade do |t|

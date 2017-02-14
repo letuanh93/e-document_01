@@ -5,4 +5,5 @@ $(document).on('turbolinks:load', function() {
     $('body').animate({
     scrollTop: $(this).offset().top});
   });
+  $("#e1").select2();
 });

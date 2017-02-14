@@ -25,6 +25,8 @@ class User < ApplicationRecord
     foreign_key: :guest_id, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :buycoins
+  has_many :active_invite, foreign_key: :host_id, dependent: :destroy, class_name: Permit.name
+  has_many :passive_invite, foreign_key: :guest_id, dependent: :destroy, class_name: Permit.name
   scope :email_admin, -> () {
     self.select(:id, :email).where(role: :admin)
   }

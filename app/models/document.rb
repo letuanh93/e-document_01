@@ -9,6 +9,7 @@ class Document < ApplicationRecord
   has_many :reads
   has_many :favorites
   has_many :downloads
+  has_many :permits
 
   mount_uploader :attachment, AttachmentUploader
 

@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.3.3"
+ruby "2.3.1"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -34,6 +34,7 @@ gem "public_activity", "~> 1.5"
 gem "social-share-button"
 gem "omniauth-facebook"
 gem "figaro"
+gem "select2-rails"
 gem "whenever", require: false
 gem "rmagick", "~> 2.15", ">= 2.15.4"
 

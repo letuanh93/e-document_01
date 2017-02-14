@@ -41,6 +41,7 @@
           </p>
           <% if user_signed_in? %>
             <% if @document.user == current_user %>
+
               <%= form_for current_user.downloads.build do |f| %>
                 <%= f.hidden_field :document_id, value: @document.id %>
                 <%= f.hidden_field :count_download, value: @download_free %>

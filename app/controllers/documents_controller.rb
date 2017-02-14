@@ -6,6 +6,7 @@ class DocumentsController < ApplicationController
   def index
     @categories = Category.all
     @document_support = Supports::DocumentSupport.new
+    @users = User.all
   end
 
   def new
@@ -47,6 +48,10 @@ class DocumentsController < ApplicationController
       read = current_user.reads.build
       read.document = @document
       read.save
+      # permit = Permit.find_by id: params[:id]
+      # if permit.host == current_user || permit.guest == current_user
+      #   redirect_to document_path
+      # end
     end
   end
 
@@ -58,9 +63,14 @@ class DocumentsController < ApplicationController
 
   def load_document
     @document = Document.find_by id: params[:id]
+    @permit = Permit.find_by id: params[:id]
     if @document.nil? || @document.waiting?
       flash.now[:warning] = t "document.not_found"
       render_404
+    # elsif current_user != @document.user_id && current_user != @permit.guest
+    #   render_404
+    # else
+    #   redirect_to document_path
     end
   end
 end
